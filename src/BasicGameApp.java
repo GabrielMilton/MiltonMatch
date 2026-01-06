@@ -48,7 +48,7 @@ public class BasicGameApp implements Runnable {
 	private Niam astro;
     private Niam Ren;
     private Niam Toby;
-    
+
 
 
    // Main method definition
