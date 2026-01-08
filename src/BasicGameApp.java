@@ -41,13 +41,16 @@ public class BasicGameApp implements Runnable {
 	public Image astroPic;
     public Image NattyNiam;
     public Image RobustRen;
-    public Image ToughMinedToby;
-
+    public Image TyrannicalToby;
+    public Image JovialJackson;
+    public Image CockyCaden;
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Niam astro;
-    private Niam Ren;
-    private Niam Toby;
+	private Astronount Niam;
+    private RobustRen Ren;
+    private TyrannicalToby Toby;
+    private Astronount Jackson;
+    private Astronount Caden;
 
 
 
@@ -70,7 +73,10 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Niam(10,100);
+        TyrannicalToby = Toolkit.getDefaultToolkit().getImage("TryannicalToby.png");
+		Ren = new RobustRen(302,21);
+        Toby = new TyrannicalToby(500,500);
+
 
 
 	}// BasicGameApp()
@@ -98,7 +104,10 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+
+        Ren.move();
+        Toby.move();
+
 
 	}
 	
@@ -149,7 +158,8 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(TyrannicalToby, Toby.xpos, Toby.ypos, Toby.width, Toby.height, null);
+
 
 		g.dispose();
 
