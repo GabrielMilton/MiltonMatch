@@ -36,6 +36,19 @@ public class Astronount {
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+        if(xpos>=1500 - width){
+            dx =-dx ;;
+        }
+        if(xpos<=0){
+            dx= -dx;
+        }
+        if(ypos<=0){
+            dy= -dy;
+        }
+        if(ypos>=890-height){
+            dy = -dy;
+
+        }
         xpos = xpos + dx;
         ypos = ypos + dy;
  

@@ -29,8 +29,8 @@ public class BasicGameApp implements Runnable {
    //You can set their initial values too
    
    //Sets the width and height of the program window
-	final int WIDTH = 1000;
-	final int HEIGHT = 700;
+	final int WIDTH = 1500;
+	final int HEIGHT = 800;
 
    //Declare the variables needed for the graphics
 	public JFrame frame;
@@ -44,13 +44,15 @@ public class BasicGameApp implements Runnable {
     public Image TyrannicalToby;
     public Image JovialJackson;
     public Image CockyCaden;
+    public Image BackgroundImage;
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronount Niam;
     private RobustRen Ren;
     private TyrannicalToby Toby;
-    private Astronount Jackson;
-    private Astronount Caden;
+    private JovialJackson Jackson;
+    private CockyCaden Caden;
+
 
 
 
@@ -72,10 +74,16 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
+        NattyNiam = Toolkit.getDefaultToolkit().getImage("NattyNiam.png");
         TyrannicalToby = Toolkit.getDefaultToolkit().getImage("TryannicalToby.png");
+        JovialJackson = Toolkit.getDefaultToolkit().getImage("JovialJackson.png");
+        CockyCaden = Toolkit.getDefaultToolkit().getImage("CockyCaden.png");
+
 		Ren = new RobustRen(302,21);
         Toby = new TyrannicalToby(500,500);
+        Jackson = new JovialJackson(233,20);
+        Caden = new CockyCaden(3,3);
 
 
 
@@ -107,6 +115,8 @@ public class BasicGameApp implements Runnable {
 
         Ren.move();
         Toby.move();
+        Jackson.move();
+        Caden.move();
 
 
 	}
@@ -159,6 +169,7 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
 		g.drawImage(TyrannicalToby, Toby.xpos, Toby.ypos, Toby.width, Toby.height, null);
+
 
 
 		g.dispose();
