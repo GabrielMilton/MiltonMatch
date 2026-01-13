@@ -1,7 +1,9 @@
+import java.awt.*;
+
 /**
  * Created by chales on 11/6/2017.
  */
-public class Astronount {
+public class NattyNiam {
 
     //VARIABLE DECLARATION SECTION
     //Here's where you state which variables you are going to use.
@@ -12,7 +14,10 @@ public class Astronount {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;
+    public Rectangle hitbox;
+
+    //a boolean to denote if the hero is alive or dead.
 
 
     // METHOD DEFINITION SECTION
@@ -23,7 +28,7 @@ public class Astronount {
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public Astronount(int pXpos, int pYpos) {
+    public NattyNiam(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
         dx =1;
@@ -31,6 +36,8 @@ public class Astronount {
         width = 60;
         height = 60;
         isAlive = true;
+        hitbox = new Rectangle(xpos,ypos,width,height);
+
  
     } // constructor
 
@@ -45,7 +52,7 @@ public class Astronount {
         if(ypos<=0){
             dy= -dy;
         }
-        if(ypos>=890-height){
+        if(ypos>=799-height){
             dy = -dy;
 
         }

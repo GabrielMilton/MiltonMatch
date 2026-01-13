@@ -1,6 +1,6 @@
 import java.awt.*;
 
-    public class JovialJackson {
+    public class GrittyGideon {
 
         //VARIABLE DECLARATION SECTION
         //Here's where you state which variables you are going to use.
@@ -24,7 +24,7 @@ import java.awt.*;
 
         //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
         // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-        public JovialJackson(int pXpos, int pYpos) {
+        public GrittyGideon(int pXpos, int pYpos) {
             xpos = pXpos;
             ypos = pYpos;
             dx = -10;
@@ -33,32 +33,29 @@ import java.awt.*;
             height = 85;
             isAlive = true;
             iscrasinhg = false;
-            hitBox = new Rectangle(xpos,ypos,width,height);
 
         } // constructor
 
         //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
         public void move() {
-            if (xpos >= 1500 - width) {
-                dx = -dx;
-                ;
+            if(xpos>=1500 - width){
+                dx =-dx ;;
             }
-            if (xpos <= 0) {
-                dx = -dx;
+            if(xpos<=0){
+                dx= -dx;
             }
-            if (ypos <= 0) {
+            if(ypos<=0){
+                dy= -dy;
+            }
+            if(ypos>=890-height){
                 dy = -dy;
-            }
-            if (ypos >= 890 - height) {
-                dy = -dy;
-
-                xpos = xpos + dx;
-                ypos = ypos + dy;
-
 
             }
+
+            xpos = xpos + dx;
+            ypos = ypos + dy;
+
+
         }
     }
-
-
 

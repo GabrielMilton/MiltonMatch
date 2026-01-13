@@ -44,14 +44,16 @@ public class BasicGameApp implements Runnable {
     public Image TyrannicalToby;
     public Image JovialJackson;
     public Image CockyCaden;
+    public Image GrittyGideon;
     public Image BackgroundImage;
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Astronount Niam;
+	private NattyNiam Niam;
     private RobustRen Ren;
     private TyrannicalToby Toby;
     private JovialJackson Jackson;
-    private CockyCaden Caden;
+    private CockyCaden     Caden;
+    private GrittyGideon Gideon;
 
 
 
@@ -76,14 +78,19 @@ public class BasicGameApp implements Runnable {
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
         NattyNiam = Toolkit.getDefaultToolkit().getImage("NattyNiam.png");
+        RobustRen = Toolkit.getDefaultToolkit().getImage("RobustRen.png");
         TyrannicalToby = Toolkit.getDefaultToolkit().getImage("TryannicalToby.png");
         JovialJackson = Toolkit.getDefaultToolkit().getImage("JovialJackson.png");
         CockyCaden = Toolkit.getDefaultToolkit().getImage("CockyCaden.png");
+        GrittyGideon = Toolkit.getDefaultToolkit().getImage("GDAWG.png");
+        BackgroundImage = Toolkit.getDefaultToolkit().getImage("BackgroundTSSG.jpg");
 
+        Niam = new NattyNiam(300,560);
 		Ren = new RobustRen(302,21);
         Toby = new TyrannicalToby(500,500);
         Jackson = new JovialJackson(233,20);
-        Caden = new CockyCaden(3,3);
+        Caden = new CockyCaden(30,450);
+        Gideon = new GrittyGideon(600,350);
 
 
 
@@ -112,14 +119,62 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-
+        Niam.move();
         Ren.move();
         Toby.move();
         Jackson.move();
         Caden.move();
+        Gideon.move();
 
 
 	}
+
+    public void Crashing(){
+        if (Niam.hitbox .intersects(Ren.hitBox)){
+                System.out.println("DEAD!!!");
+                Niam.dx = -Niam.dx;
+                Ren.dx = -Ren.dx;
+                Niam.dy = -Ren.dy;
+                Ren.dy = -Ren.dy;
+
+            }
+
+        if (Niam.hitbox .intersects(Toby.hitBox)){
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Toby.dx = -Toby.dx;
+            Niam.dy = -Ren.dy;
+            Toby.dy = -Toby.dy;
+
+        }
+
+        if (Niam.hitbox .intersects(Caden.hitBox)){
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Caden.dx = -Caden.dx;
+            Niam.dy = -Ren.dy;
+            Caden.dy = -Caden.dy;
+
+        }
+        if (Niam.hitbox .intersects(Toby.hitBox)){
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Toby.dx = -Toby.dx;
+            Niam.dy = -Niam.dy;
+            Toby.dy = -Toby.dy;
+
+        }
+        if (Niam.hitbox .intersects(Jackson.hitBox)){
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Jackson.dx = -Jackson.dx;
+            Niam.dy = -Ren.dy;
+            Jackson.dy = -Jackson.dy;
+
+        }
+
+
+    }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
@@ -168,8 +223,13 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+        g.drawImage(BackgroundImage,0,0,WIDTH,HEIGHT,null);
+        g.drawImage(NattyNiam,Niam.xpos, Niam.ypos,Niam.width,Niam.height,null);
 		g.drawImage(TyrannicalToby, Toby.xpos, Toby.ypos, Toby.width, Toby.height, null);
-
+        g.drawImage(RobustRen,Ren.xpos,Ren.ypos,Toby.width, Toby.height,null);
+        g.drawImage(JovialJackson,Jackson.xpos, Jackson.ypos,Jackson.width,Jackson.height,null);
+        g.drawImage(CockyCaden,Caden.xpos, Caden.ypos,Caden.width,Caden.height,null);
+        g.drawImage(GrittyGideon,Gideon.xpos, Gideon.ypos,Gideon.width,Gideon.height,null);
 
 
 		g.dispose();
