@@ -43,7 +43,7 @@ public class RobustRen {
 
         if (xpos >= 1500 - width) {
                     dx = -dx;
-                    ;
+
                 }
                 if (xpos <= 0) {
                     dx = -dx;
@@ -58,8 +58,7 @@ public class RobustRen {
 
                 xpos = xpos + dx;
                 ypos = ypos + dy;
-
-
+            hitBox = new Rectangle(xpos,ypos,width,height);
             }
         }
 

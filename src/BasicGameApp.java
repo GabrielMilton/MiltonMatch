@@ -18,6 +18,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+//todo: make a power varilbe for each class, then make if stament saying name.power > name2.move then isalive=true
 
 //*******************************************************************************
 // Class Definition Section
@@ -25,9 +26,9 @@ import javax.swing.JPanel;
 public class BasicGameApp implements Runnable {
 
    //Variable Definition Section
-   //Declare the variables used in the program 
+   //Declare the variables used in the program
    //You can set their initial values too
-   
+
    //Sets the width and height of the program window
 	final int WIDTH = 1500;
 	final int HEIGHT = 800;
@@ -36,7 +37,7 @@ public class BasicGameApp implements Runnable {
 	public JFrame frame;
 	public Canvas canvas;
    public JPanel panel;
-   
+
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
     public Image NattyNiam;
@@ -62,7 +63,7 @@ public class BasicGameApp implements Runnable {
    // This is the code that runs first and automatically
 	public static void main(String[] args) {
 		BasicGameApp ex = new BasicGameApp();   //creates a new instance of the game
-		new Thread(ex).start();                 //creates a threads & starts up the code in the run( ) method  
+		new Thread(ex).start();                 //creates a threads & starts up the code in the run( ) method
 	}
 
 
@@ -71,22 +72,22 @@ public class BasicGameApp implements Runnable {
    // This section is the setup portion of the program
    // Initialize your variables and construct your program objects here.
 	public BasicGameApp() {
-      
+
       setUpGraphics();
-       
+
       //variable and objects
-      //create (construct) the objects needed for the game and load up 
+      //create (construct) the objects needed for the game and load up
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png");//load the picture
         NattyNiam = Toolkit.getDefaultToolkit().getImage("NattyNiam.png");
         RobustRen = Toolkit.getDefaultToolkit().getImage("RobustRen.png");
         TyrannicalToby = Toolkit.getDefaultToolkit().getImage("TryannicalToby.png");
-        JovialJackson = Toolkit.getDefaultToolkit().getImage("JovialJackson.png");
+        JovialJackson = Toolkit.getDefaultToolkit().getImage("JoivalJackson.png");
         CockyCaden = Toolkit.getDefaultToolkit().getImage("CockyCaden.png");
         GrittyGideon = Toolkit.getDefaultToolkit().getImage("GDAWG.png");
         BackgroundImage = Toolkit.getDefaultToolkit().getImage("BackgroundTSSG.jpg");
 
         Niam = new NattyNiam(300,560);
-		Ren = new RobustRen(302,21);
+		Ren = new RobustRen(302,221);
         Toby = new TyrannicalToby(500,500);
         Jackson = new JovialJackson(233,20);
         Caden = new CockyCaden(30,450);
@@ -96,7 +97,7 @@ public class BasicGameApp implements Runnable {
 
 	}// BasicGameApp()
 
-   
+
 //*******************************************************************************
 //User Method Section
 //
@@ -125,38 +126,21 @@ public class BasicGameApp implements Runnable {
         Jackson.move();
         Caden.move();
         Gideon.move();
+        Crashing();
 
 
 	}
 
-    public void Crashing(){
-        if (Niam.hitbox .intersects(Ren.hitBox)){
-                System.out.println("DEAD!!!");
-                Niam.dx = -Niam.dx;
-                Ren.dx = -Ren.dx;
-                Niam.dy = -Ren.dy;
-                Ren.dy = -Ren.dy;
-
-            }
-
-        if (Niam.hitbox .intersects(Toby.hitBox)){
+    public void Crashing() {
+        if (Niam.hitbox.intersects(Ren.hitBox)) {
             System.out.println("DEAD!!!");
             Niam.dx = -Niam.dx;
-            Toby.dx = -Toby.dx;
-            Niam.dy = -Ren.dy;
-            Toby.dy = -Toby.dy;
-
+            Ren.dx = -Ren.dx;
+            Niam.dy = -Niam.dy;
+            Ren.dy = -Ren.dy;
         }
 
-        if (Niam.hitbox .intersects(Caden.hitBox)){
-            System.out.println("DEAD!!!");
-            Niam.dx = -Niam.dx;
-            Caden.dx = -Caden.dx;
-            Niam.dy = -Ren.dy;
-            Caden.dy = -Caden.dy;
-
-        }
-        if (Niam.hitbox .intersects(Toby.hitBox)){
+        if (Niam.hitbox.intersects(Toby.hitBox)) {
             System.out.println("DEAD!!!");
             Niam.dx = -Niam.dx;
             Toby.dx = -Toby.dx;
@@ -164,18 +148,129 @@ public class BasicGameApp implements Runnable {
             Toby.dy = -Toby.dy;
 
         }
-        if (Niam.hitbox .intersects(Jackson.hitBox)){
+
+        if (Niam.hitbox.intersects(Caden.hitBox)) {
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Caden.dx = -Caden.dx;
+            Niam.dy = -Niam.dy;
+            Caden.dy = -Caden.dy;
+        }
+        if (Niam.hitbox.intersects(Toby.hitBox)) {
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Toby.dx = -Toby.dx;
+            Niam.dy = -Niam.dy;
+            Toby.dy = -Toby.dy;
+        }
+
+        if (Niam.hitbox.intersects(Jackson.hitBox)) {
             System.out.println("DEAD!!!");
             Niam.dx = -Niam.dx;
             Jackson.dx = -Jackson.dx;
-            Niam.dy = -Ren.dy;
+            Niam.dy = -Niam.dy;
             Jackson.dy = -Jackson.dy;
+        }
+        if (Niam.hitbox.intersects(Gideon.hitBox)) {
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Gideon.dx = -Gideon.dx;
+            Niam.dy = -Niam.dy;
+            Gideon.dy = -Gideon.dy;
+        }
 
+        if (Toby.hitBox.intersects(Niam.hitbox)) {
+            System.out.println("DEAD!!!");
+            Toby.dx = -Toby.dx;
+            Niam.dx = -Niam.dx;
+            Toby.dy = -Toby.dy;
+            Niam.dy = -Niam.dy;
+        }
+
+        if (Toby.hitBox.intersects(Ren.hitBox)) {
+            System.out.println("DEAD!!!");
+            Toby.dx = -Toby.dx;
+            Ren.dx = -Ren.dx;
+            Toby.dy = -Toby.dy;
+            Ren.dy = -Ren.dy;
+        }
+
+        if (Toby.hitBox.intersects(Caden.hitBox)) {
+            System.out.println("DEAD!!!");
+            Toby.dx = -Toby.dx;
+            Caden.dx = -Caden.dx;
+            Toby.dy = -Toby.dy;
+            Caden.dy = -Caden.dy;
+        }
+
+        if (Toby.hitBox.intersects(Jackson.hitBox)) {
+            System.out.println("DEAD!!!");
+            Toby.dx = -Toby.dx;
+            Jackson.dx = -Jackson.dx;
+            Toby.dy = -Toby.dy;
+            Jackson.dy = -Jackson.dy;
+        }
+
+        if (Toby.hitBox.intersects(Gideon.hitBox)) {
+            System.out.println("DEAD!!!");
+            Toby.dx = -Toby.dx;
+            Gideon.dx = -Gideon.dx;
+            Toby.dy = -Toby.dy;
+            Gideon.dy = -Gideon.dy;
+        }
+
+        if (Ren.hitBox.intersects(Niam.hitbox)) {
+                System.out.println("DEAD!!!");
+                Ren.dx = -Ren.dx;
+                Niam.dx = -Niam.dx;
+                Ren.dy = -Ren.dy;
+                Gideon.dy = -Gideon.dy;
+        }
+
+        if (Ren.hitBox.intersects(Toby.hitBox)) {
+            System.out.println("DEAD!!!");
+            Ren.dx = -Ren.dx;
+            Toby.dx = -Toby.dx;
+            Ren.dy = -Ren.dy;
+            Toby.dy = -Toby.dy;
+        }
+
+        if (Ren.hitBox.intersects(Jackson.hitBox)) {
+            System.out.println("DEAD!!!");
+            Ren.dx = -Ren.dx;
+            Jackson.dx = -Jackson.dx;
+            Ren.dy = -Ren.dy;
+            Jackson.dy = -Jackson.dy;
+        }
+
+        if (Ren.hitBox.intersects(Caden.hitBox)) {
+            System.out.println("DEAD!!!");
+            Ren.dx = -Ren.dx;
+            Caden.dx = -Caden.dx;
+            Ren.dy = -Ren.dy;
+            Caden.dy = -Caden.dy;
+        }
+
+        if (Ren.hitBox.intersects(Gideon.hitBox)) {
+            System.out.println("DEAD!!!");
+            Ren.dx = -Ren.dx;
+            Gideon.dx = -Gideon.dx;
+            Ren.dy = -Ren.dy;
+            Gideon.dy = -Gideon.dy;
+        }
+
+        if (Caden.hitBox.intersects(Niam.hitbox)) {
+            System.out.println("DEAD!!!");
+            Caden.dx = -Caden.dx;
+            Gideon.dx = -Gideon.dx;
+            Caden.dy = -Caden.dy;
+            Gideon.dy = -Gideon.dy;
         }
 
 
+
     }
-	
+
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
    		//sleep
@@ -189,31 +284,31 @@ public class BasicGameApp implements Runnable {
    //Graphics setup method
    private void setUpGraphics() {
       frame = new JFrame("Application Template");   //Create the program window or frame.  Names it.
-   
+
       panel = (JPanel) frame.getContentPane();  //sets up a JPanel which is what goes in the frame
       panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));  //sizes the JPanel
       panel.setLayout(null);   //set the layout
-   
+
       // creates a canvas which is a blank rectangular area of the screen onto which the application can draw
       // and trap input events (Mouse and Keyboard events)
-      canvas = new Canvas();  
+      canvas = new Canvas();
       canvas.setBounds(0, 0, WIDTH, HEIGHT);
       canvas.setIgnoreRepaint(true);
-   
+
       panel.add(canvas);  // adds the canvas to the panel.
-   
+
       // frame operations
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //makes the frame close and exit nicely
       frame.pack();  //adjusts the frame and its contents so the sizes are at their default or larger
       frame.setResizable(false);   //makes it so the frame cannot be resized
       frame.setVisible(true);      //IMPORTANT!!!  if the frame is not set to visible it will not appear on the screen!
-      
+
       // sets up things so the screen displays images nicely.
       canvas.createBufferStrategy(2);
       bufferStrategy = canvas.getBufferStrategy();
       canvas.requestFocus();
       System.out.println("DONE graphic setup");
-   
+
    }
 
 
@@ -225,7 +320,8 @@ public class BasicGameApp implements Runnable {
       //draw the image of the astronaut
         g.drawImage(BackgroundImage,0,0,WIDTH,HEIGHT,null);
         g.drawImage(NattyNiam,Niam.xpos, Niam.ypos,Niam.width,Niam.height,null);
-		g.drawImage(TyrannicalToby, Toby.xpos, Toby.ypos, Toby.width, Toby.height, null);
+        g.drawRect(Niam.hitbox.x,Niam.hitbox.y,Niam.hitbox.width,Niam.hitbox.height);
+        g.drawImage(TyrannicalToby, Toby.xpos, Toby.ypos, Toby.width, Toby.height, null);
         g.drawImage(RobustRen,Ren.xpos,Ren.ypos,Toby.width, Toby.height,null);
         g.drawImage(JovialJackson,Jackson.xpos, Jackson.ypos,Jackson.width,Jackson.height,null);
         g.drawImage(CockyCaden,Caden.xpos, Caden.ypos,Caden.width,Caden.height,null);

@@ -40,7 +40,7 @@ import java.awt.*;
         //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
         public void move() {{
             if(xpos>=1500 - width){
-                dx =-dx ;;
+                dx =-dx;
             }
             if(xpos<=0){
                 dx= -dx;
@@ -56,7 +56,7 @@ import java.awt.*;
             xpos = xpos + dx;
             ypos = ypos + dy;
 
-
+            hitBox = new Rectangle(xpos,ypos,width,height);
         }
         }
     }

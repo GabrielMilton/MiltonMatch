@@ -17,6 +17,7 @@ public class NattyNiam {
     public boolean isAlive;
     public Rectangle hitbox;
 
+
     //a boolean to denote if the hero is alive or dead.
 
 
@@ -58,8 +59,10 @@ public class NattyNiam {
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
- 
+        hitbox = new Rectangle(xpos,ypos,width,height);
+
     }
+
 }
 
 

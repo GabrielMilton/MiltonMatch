@@ -28,7 +28,7 @@ import java.awt.*;
             xpos = pXpos;
             ypos = pYpos;
             dx = -10;
-            dy = 0;
+            dy = 5;
             width = 85;
             height = 85;
             isAlive = true;
@@ -41,7 +41,7 @@ import java.awt.*;
         public void move() {
             if (xpos >= 1500 - width) {
                 dx = -dx;
-                ;
+
             }
             if (xpos <= 0) {
                 dx = -dx;
@@ -55,7 +55,7 @@ import java.awt.*;
                 xpos = xpos + dx;
                 ypos = ypos + dy;
 
-
+                hitBox = new Rectangle(xpos,ypos,width,height);
             }
         }
     }
