@@ -14,6 +14,7 @@ public class TyrannicalToby {
         public boolean isAlive;
         public Rectangle hitBox;
         public boolean iscrasinhg;
+        public int Power;
 
 
         // METHOD DEFINITION SECTION
@@ -34,6 +35,7 @@ public class TyrannicalToby {
             isAlive = true;
             iscrasinhg = false;
             hitBox = new Rectangle(xpos,ypos,width,height);
+            Power = (int)(Math.random()*10)+1;
 
         } // constructor
 

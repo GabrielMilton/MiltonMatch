@@ -14,6 +14,7 @@ import java.awt.*;
         public boolean isAlive;
         public Rectangle hitBox;
         public boolean iscrasinhg;
+        public int Power;
 
 
         // METHOD DEFINITION SECTION
@@ -34,31 +35,35 @@ import java.awt.*;
             isAlive = true;
             iscrasinhg = false;
             hitBox = new Rectangle(xpos,ypos,width,height);
+            Power = (int)(Math.random()*10)+1;
 
         } // constructor
 
         //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
         public void move() {
             if (xpos >= 1500 - width) {
-                dx = -dx;
-
+                xpos = 0;
             }
+
             if (xpos <= 0) {
-                dx = -dx;
+                xpos = 1499 - width;
             }
-            if (ypos <= 0) {
-                dy = -dy;
-            }
-            if (ypos >= 890 - height) {
-                dy = -dy;
 
-                xpos = xpos + dx;
-                ypos = ypos + dy;
-
-                hitBox = new Rectangle(xpos,ypos,width,height);
+            if (ypos >= 799 - height) {
+                ypos = 1;
             }
+
+            if (ypos <= 0 ) {
+                ypos = 799-height;
+            }
+            xpos = xpos + dx;
+            ypos = ypos + dy;
+            hitBox = new Rectangle(xpos,ypos,width,height);
         }
     }
+
+
+
 
 
 

@@ -14,6 +14,7 @@ import java.awt.*;
         public boolean isAlive;
         public Rectangle hitBox;
         public boolean iscrasinhg;
+        public int Power;
 
 
         // METHOD DEFINITION SECTION
@@ -28,12 +29,13 @@ import java.awt.*;
             xpos = pXpos;
             ypos = pYpos;
             dx = -50;
-            dy = 30;
+            dy = 20;
             width = 85;
             height = 85;
             isAlive = true;
             iscrasinhg = false;
             hitBox = new Rectangle(xpos,ypos,width,height);
+            Power = (int)(Math.random()*10)+1;
 
         } // constructor
 

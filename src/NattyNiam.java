@@ -16,7 +16,8 @@ public class NattyNiam {
     public int height;
     public boolean isAlive;
     public Rectangle hitbox;
-
+    public boolean iscrasinhg;
+    public int Power;
 
     //a boolean to denote if the hero is alive or dead.
 
@@ -37,10 +38,13 @@ public class NattyNiam {
         width = 60;
         height = 60;
         isAlive = true;
+        iscrasinhg = false;
         hitbox = new Rectangle(xpos,ypos,width,height);
+        Power = (int)(Math.random()*10)+1;
 
- 
+
     } // constructor
+
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
