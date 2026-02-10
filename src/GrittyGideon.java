@@ -34,7 +34,7 @@ import java.awt.*;
             height = 85;
             isAlive = true;
             iscrasinhg = false;
-            hitBox = new Rectangle(xpos,ypos,width,height);
+            hitBox = new Rectangle(xpos,ypos,90,90);
             Power = (int)(Math.random()*10)+1;
 
 
@@ -42,7 +42,7 @@ import java.awt.*;
 
         //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
         public void move() {
-            if(xpos>=1500 - width){
+            if(xpos>=1498 - width){
                 dx =-dx;
             }
             if(xpos<=0){
@@ -51,7 +51,7 @@ import java.awt.*;
             if(ypos<=0){
                 dy= -dy;
             }
-            if(ypos>=890-height){
+            if(ypos>=800-height){
                 dy = -dy;
 
             }

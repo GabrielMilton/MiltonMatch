@@ -34,7 +34,7 @@ public class TyrannicalToby {
             height = 85;
             isAlive = true;
             iscrasinhg = false;
-            hitBox = new Rectangle(xpos,ypos,width,height);
+            hitBox = new Rectangle(xpos,ypos,90,90);
             Power = (int)(Math.random()*10)+1;
 
         } // constructor

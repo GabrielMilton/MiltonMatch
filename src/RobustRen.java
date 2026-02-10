@@ -35,7 +35,7 @@ public class RobustRen {
         height = 85;
         isAlive = true;
         iscrasinhg = false;
-        hitBox = new Rectangle(xpos,ypos,width,height);
+        hitBox = new Rectangle(xpos,ypos,90,90);
         Power = (int)(Math.random()*10)+1;
 
     } // constructor
@@ -45,7 +45,6 @@ public class RobustRen {
 
         if (xpos >= 1500 - width) {
                     dx = -dx;
-
                 }
                 if (xpos <= 0) {
                     dx = -dx;

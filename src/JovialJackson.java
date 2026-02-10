@@ -30,11 +30,11 @@ import java.awt.*;
             ypos = pYpos;
             dx = -10;
             dy = 5;
-            width = 85;
-            height = 85;
+            width = 95;
+            height = 95;
             isAlive = true;
             iscrasinhg = false;
-            hitBox = new Rectangle(xpos,ypos,width,height);
+            hitBox = new Rectangle(xpos,ypos,90,90);
             Power = (int)(Math.random()*10)+1;
 
         } // constructor
@@ -58,7 +58,7 @@ import java.awt.*;
             }
             xpos = xpos + dx;
             ypos = ypos + dy;
-            hitBox = new Rectangle(xpos,ypos,width,height);
+            hitBox = new Rectangle(xpos,ypos,90,90);
         }
     }
 

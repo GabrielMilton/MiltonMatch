@@ -39,7 +39,7 @@ public class NattyNiam {
         height = 60;
         isAlive = true;
         iscrasinhg = false;
-        hitbox = new Rectangle(xpos,ypos,width,height);
+        hitbox = new Rectangle(xpos,ypos,90,90);
         Power = (int)(Math.random()*10)+1;
 
 
