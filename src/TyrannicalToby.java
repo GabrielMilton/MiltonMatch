@@ -28,8 +28,8 @@ public class TyrannicalToby {
         public TyrannicalToby(int pXpos, int pYpos) {
             xpos = pXpos;
             ypos = pYpos;
-            dx = -10;
-            dy = 0;
+            dx = 5;
+            dy = 7;
             width = 85;
             height = 85;
             isAlive = true;

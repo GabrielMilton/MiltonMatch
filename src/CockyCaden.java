@@ -28,8 +28,8 @@ import java.awt.*;
         public CockyCaden(int pXpos, int pYpos) {
             xpos = pXpos;
             ypos = pYpos;
-            dx = -50;
-            dy = 20;
+            dx = 5;
+            dy = 7;
             width = 85;
             height = 85;
             isAlive = true;

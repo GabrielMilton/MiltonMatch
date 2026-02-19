@@ -40,7 +40,10 @@ public class NattyNiam {
         isAlive = true;
         iscrasinhg = false;
         hitbox = new Rectangle(xpos,ypos,90,90);
+        //this power varible is in every class. it detemerines what charater dissapears who stays
         Power = (int)(Math.random()*10)+1;
+
+
 
 
     } // constructor

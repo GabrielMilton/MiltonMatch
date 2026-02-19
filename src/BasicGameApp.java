@@ -12,12 +12,14 @@
 //import java.awt.Canvas;
 
 //Graphics Libraries
+import org.w3c.dom.html.HTMLDOMImplementation;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import java.sql.SQLOutput;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+//these two are here to be able to dispaly text
 import java.awt.Color;
 import java.awt.Font;
 
@@ -25,7 +27,7 @@ import java.awt.Font;
 
 //todo: ADD THE WARPING FOR FULL CREDIT ADD IT TO A POWERUP
 //todo: ADD COMMENTS!!!!!!!!!
-//todo: make altbackground rible make if stament like: if this image is alive and the rest are dead then this backgorund and text will show up.
+//todo: make altbackground varible make if stament like: if this image is alive and the rest are dead then this backgorund and text will show up.
 //*******************************************************************************
 // Class Definition Section
 
@@ -53,7 +55,6 @@ public class BasicGameApp implements Runnable {
     public Image CockyCaden;
     public Image GrittyGideon;
     public Image BackgroundImage;
-    public Image AltBackground;
     public Image NiamBackground;
     public Image TobyBackground;
     public Image RenBackground;
@@ -69,7 +70,6 @@ public class BasicGameApp implements Runnable {
     private JovialJackson Jackson;
     private CockyCaden     Caden;
     private GrittyGideon Gideon;
-
 
 
 
@@ -99,7 +99,9 @@ public class BasicGameApp implements Runnable {
         CockyCaden = Toolkit.getDefaultToolkit().getImage("CockyCaden.png");
         GrittyGideon = Toolkit.getDefaultToolkit().getImage("GDAWG.png");
         BackgroundImage = Toolkit.getDefaultToolkit().getImage("BackgroundTSSG.jpg");
-        AltBackground =  Toolkit.getDefaultToolkit().getImage("");
+        NiamBackground = Toolkit.getDefaultToolkit().getImage("200_d.gif");
+        TobyBackground = Toolkit.getDefaultToolkit().getImage("Toby's.Gif.gif");
+
 
         Niam = new NattyNiam(300,560);
 		Ren = new RobustRen(450,221);
@@ -107,13 +109,14 @@ public class BasicGameApp implements Runnable {
         Jackson = new JovialJackson(900,50);
         Caden = new CockyCaden(10,450);
         Gideon = new GrittyGideon(600,580);
-
+        //This dispays the "power" of each charachter on to the terminal
         System.out.println("Niam's power:" + Niam.Power);
         System.out.println("Toby's power:" + Toby.Power);
         System.out.println("Gideon's power:" + Gideon.Power);
         System.out.println("Caden's power:" + Caden.Power);
         System.out.println("Ren's power:" + Ren.Power);
         System.out.println("Jackson's power:" + Jackson.Power);
+
 
 
     }// BasicGameApp()
@@ -153,7 +156,7 @@ public class BasicGameApp implements Runnable {
 	}
 
     public void Crashing() {
-
+//These if statements check if two charachters intercest with eachother and if they do it checks their power, whose ever power is bigger makes the other dissapear
         if (Niam.hitbox.intersects(Ren.hitBox)) {
             System.out.println("DEAD!!!");
             Niam.dx = -Niam.dx;
@@ -164,16 +167,43 @@ public class BasicGameApp implements Runnable {
                 Niam.iscrasinhg = true;
                 Ren.isAlive = false;
                 System.out.println("Ren died");
-                Ren = new RobustRen(1000000,1000000);
+                Ren.xpos =1000000;
+                Ren.ypos =2000;
             }
             if (Niam.Power<Ren.Power){
                 Ren.iscrasinhg = true;
                 Niam.isAlive = false;
                 System.out.println("Niam died");
-                Niam = new NattyNiam(1000000,1000000);
+                Niam.xpos = 103572400;
+                Niam.ypos = 1000003420;
             }
+            // This if stamtents is if both of their powers are equal then the power restets for one of them
             if (Niam.Power==Ren.Power){
                 Niam.Power = (int)(Math.random()*10)+1;
+            }
+        }
+        if (Niam.hitbox.intersects(Gideon.hitBox)) {
+            System.out.println("DEAD!!!");
+            Niam.dx = -Niam.dx;
+            Gideon.dx = -Gideon.dx;
+            Niam.dy = -Niam.dy;
+            Gideon.dy = -Gideon.dy;
+            if (Niam.Power>Gideon.Power){
+                Niam.iscrasinhg = true;
+                Gideon.isAlive = false;
+                System.out.println("Ren died");
+                Gideon.xpos =1000000;
+                Gideon.ypos =2000;
+            }
+            if (Niam.Power<Gideon.Power){
+                Gideon.iscrasinhg = true;
+                Niam.isAlive = false;
+                System.out.println("Niam died");
+                Niam.xpos = 103572400;
+                Niam.ypos = 1000003420;
+            }
+            if (Niam.Power==Gideon.Power){
+                Gideon.Power = (int)(Math.random()*10)+1;
             }
         }
 
@@ -196,15 +226,17 @@ public class BasicGameApp implements Runnable {
                 Niam.iscrasinhg = true;
                 Caden.isAlive = false;
                 System.out.println("Caden died");
-                Caden = new CockyCaden(1000000,1000000);
+                Caden.xpos = 10000900;
+                Caden.ypos = 100300;
             }
             if (Niam.Power<Caden.Power){
                 Caden.iscrasinhg = true;
                 Niam.isAlive = false;
                 System.out.println("Niam died");
-                Niam = new NattyNiam(1000000,1000000);
+                Niam.xpos = 194832;
+                Niam.ypos = 20000;
             }
-            if (Niam.Power==Ren.Power){
+            if (Niam.Power==Caden.Power){
                 Niam.Power = (int)(Math.random()*10)+1;
             }
         }
@@ -218,15 +250,17 @@ public class BasicGameApp implements Runnable {
                 Niam.iscrasinhg = true;
                 Toby.isAlive = false;
                 System.out.println(" toby died");
-                Toby = new TyrannicalToby(23906842,79546440);
+                Toby.xpos = 23906842;
+                Toby.ypos = 79546440;
             }
             if (Toby.Power>Niam.Power) {
                 Toby.iscrasinhg = true;
                 Niam.isAlive = false;
                 System.out.println("Niam died");
-                Niam = new NattyNiam(329423, 32523968);
+                Niam.xpos = 194832;
+                Niam.ypos = 20000;
             }
-            if (Niam.Power==Ren.Power){
+            if (Niam.Power==Toby.Power){
                 Niam.Power = (int)(Math.random()*10)+1;
             }
         }
@@ -241,13 +275,17 @@ public class BasicGameApp implements Runnable {
                 Niam.iscrasinhg = true;
                 Jackson.isAlive = false;
                 System.out.println(" Jackson's died");
-                Jackson = new JovialJackson(28352832,623592);
+                Jackson.width = 1;
+                Jackson.height =1;
+                Jackson.xpos = 284352832;
+                Jackson.ypos = 62364592;
             }
-            if (Niam.Power>Jackson.Power) {
+            if (Niam.Power<Jackson.Power) {
                 Jackson.iscrasinhg = true;
                 Niam.isAlive = false;
                 System.out.println("Niam died");
-                Niam = new NattyNiam(78398254, 32698239);
+                Niam.xpos = 194832;
+                Niam.ypos = 20000;
             }
             if (Niam.Power==Jackson.Power){
                 Niam.Power = (int)(Math.random()*10)+1;
@@ -267,13 +305,15 @@ public class BasicGameApp implements Runnable {
                 Niam.iscrasinhg = true;
                 Gideon.isAlive = false;
                 System.out.println("Gideon died");
-                Gideon = new GrittyGideon(10235348,439682398);
+                Gideon.xpos = 10235348;
+                Gideon.ypos = 439682398;
             }
             if (Gideon.Power>Niam.Power){
                 Gideon.iscrasinhg = true;
                 Niam.isAlive = false;
                 System.out.println("Niam died");
-                Niam = new NattyNiam(230598239,76829234);
+                Niam.xpos = 194832;
+                Niam.ypos = 20000;
                 if (Gideon.Power==Niam.Power){
                     Niam.Power = (int)(Math.random()*10)+1;
                     Gideon.Power = (int)(Math.random()*10)+1;
@@ -299,14 +339,16 @@ public class BasicGameApp implements Runnable {
                 Toby.iscrasinhg = true;
                 Ren.isAlive = false;
                 System.out.println("Ren died");
-                Ren = new RobustRen(1000000,1000000);
+                Ren.xpos =1000000;
+                Ren.ypos =2000;
 
             }
             if (Toby.Power<Ren.Power){
                 Ren.iscrasinhg = true;
                 Toby.isAlive = false;
                 System.out.println("Toby died");
-                Toby = new TyrannicalToby(1000000,1000000);
+                Toby.xpos = 23906842;
+                Toby.ypos = 79546440;
             }
             if (Toby.Power==Ren.Power){
                 Toby.Power = (int)(Math.random()*10)+1;
@@ -324,13 +366,15 @@ public class BasicGameApp implements Runnable {
                 Toby.iscrasinhg = true;
                 Caden.isAlive = false;
                 System.out.println("Caden died");
-                Caden = new CockyCaden(1000000,1000000);
+                Caden.xpos = 13958124;
+                Caden.ypos = 143000;
             }
             if (Toby.Power<Caden.Power){
                 Caden.iscrasinhg = true;
                 Toby.isAlive = false;
                 System.out.println("Toby died");
-                Toby = new TyrannicalToby(1000000,1000000);
+                Toby.xpos = 23906842;
+                Toby.ypos = 79546440;
             }
             if (Toby.Power==Caden.Power){
                 Toby.Power = (int)(Math.random()*10)+1;
@@ -348,13 +392,17 @@ public class BasicGameApp implements Runnable {
                 Toby.iscrasinhg = true;
                 Jackson.isAlive = false;
                 System.out.println("Jackson died");
-                Jackson = new JovialJackson(50000,146780000);
+                Jackson.width = 1;
+                Jackson.height =1;
+                Jackson.xpos = 28352832;
+                Jackson.ypos = 623592;
             }
             if (Toby.Power<Jackson.Power){
                 Jackson.iscrasinhg = true;
                 Toby.isAlive = false;
                 System.out.println("Toby died");
-                Toby = new TyrannicalToby(1000000,1000000);
+                Toby.xpos = 23906842;
+                Toby.ypos = 79546440;
             }
             if (Toby.Power==Jackson.Power){
                 Toby.Power = (int)(Math.random()*10)+1;
@@ -374,17 +422,19 @@ public class BasicGameApp implements Runnable {
                 Toby.iscrasinhg = true;
                 Gideon.isAlive = false;
                 System.out.println("Gideon died");
-                Gideon = new GrittyGideon(9518273,132984192);
+                Gideon.xpos = 10235348;
+                Gideon.ypos = 439682398;
             }
             if (Toby.Power<Gideon.Power){
                 Gideon.iscrasinhg = true;
                 Toby.isAlive = false;
                 System.out.println("Niam died");
-                Toby = new TyrannicalToby(10000,1000000);
+                Toby.xpos = 23906842;
+                Toby.ypos = 79546440;
             }
-            if (Toby.Power==Gideon.Power){
-                Toby.Power = (int)(Math.random()*10)+1;
-                Gideon.Power = (int)(Math.random()*10)+1;
+            if (Toby.Power==Gideon.Power) {
+                Toby.Power = (int) (Math.random() * 10) + 1;
+                Gideon.Power = (int) (Math.random() * 10) + 1;
             }
         }
 
@@ -397,14 +447,17 @@ public class BasicGameApp implements Runnable {
             if (Ren.Power>Jackson.Power){
                 Ren.iscrasinhg = true;
                 Jackson.isAlive = false;
+                Jackson.width = 1;
+                Jackson.height =1;
+                Jackson.dx = 1;
                 System.out.println("Jackson died");
-                Jackson = new JovialJackson(10000000,105981400);
+                Jackson.xpos = 28352832;
+                Jackson.ypos = 623592;
             }
             if (Ren.Power<Jackson.Power){
                 Jackson.iscrasinhg = true;
                 Ren.isAlive = false;
                 System.out.println("Ren died");
-                Ren = new RobustRen(100040000,10000000);
             }
             if (Ren.Power==Jackson.Power){
                 Ren.Power = (int)(Math.random()*10)+1;
@@ -422,7 +475,8 @@ public class BasicGameApp implements Runnable {
                 Ren.iscrasinhg = true;
                 Caden.isAlive = false;
                 System.out.println("Caden died");
-                Caden = new CockyCaden(10200,2000101);
+                Caden.xpos = 13958124;
+                Caden.ypos = 143000;
             }
             if (Ren.Power<Caden.Power){
                 Caden.iscrasinhg = true;
@@ -446,13 +500,15 @@ public class BasicGameApp implements Runnable {
                 Ren.iscrasinhg = true;
                 Gideon.isAlive = false;
                 System.out.println("Gideon died");
-                Gideon= new GrittyGideon(10000000,102000000);
+                Gideon.xpos = 10235348;
+                Gideon.ypos = 439682398;
             }
             if (Ren.Power<Gideon.Power){
                 Gideon.iscrasinhg = true;
                 Ren.isAlive = false;
                 System.out.println("Ren died");
-                Ren = new RobustRen(102345,10000);
+                Ren.xpos =1000000;
+                Ren.ypos =2000;
             }
             if (Ren.Power==Gideon.Power){
                 Ren.Power = (int)(Math.random()*10)+1;
@@ -469,14 +525,19 @@ public class BasicGameApp implements Runnable {
             if (Caden.Power>Jackson.Power){
                 Caden.iscrasinhg = true;
                 Jackson.isAlive = false;
+                Jackson.width = 1;
+                Jackson.height =1;
+                Jackson.dx = 1;
                 System.out.println("Jackson died");
-                Jackson = new JovialJackson(100,10000000);
+                Jackson.xpos = 28352832;
+                Jackson.ypos = 623592;
             }
             if (Caden.Power<Jackson.Power){
                 Jackson.iscrasinhg = true;
                 Ren.isAlive = false;
                 System.out.println("Jacko died");
-                Jackson = new JovialJackson(1000000,1000000);
+                Jackson.xpos = 28352832;
+                Jackson.ypos = 623592;
             }
             if (Caden.Power==Jackson.Power){
                 Caden.Power = (int)(Math.random()*10)+1;
@@ -492,14 +553,16 @@ public class BasicGameApp implements Runnable {
             if (Caden.Power>Gideon.Power){
                 Caden.iscrasinhg = true;
                 Gideon.isAlive = false;
-                System.out.println("Caden died");
-                Gideon = new GrittyGideon(100000000,100);
+                System.out.println("Gideon died");
+                Gideon.xpos = 10235348;
+                Gideon.ypos = 439682398;
             }
             if (Caden.Power<Gideon.Power){
                 Gideon.iscrasinhg = true;
                 Caden.isAlive = false;
                 System.out.println("Ren died");
-                Caden = new CockyCaden(100000000,100000);
+                Caden.xpos = 13958124;
+                Caden.ypos = 143000;
             }
             if (Caden.Power==Gideon.Power){
                 Caden.Power = (int)(Math.random()*10)+1;
@@ -516,14 +579,19 @@ public class BasicGameApp implements Runnable {
             if (Gideon.Power>Jackson.Power){
                 Gideon.iscrasinhg = true;
                 Jackson.isAlive = false;
+                Jackson.width = 1;
+                Jackson.height =1;
+                Jackson.dx = 1;
                 System.out.println("Jackson died");
-                Jackson = new JovialJackson(1000000000,100000);
+                Jackson.xpos = 28352832;
+                Jackson.ypos = 623592;
             }
             if (Gideon.Power<Jackson.Power){
                 Jackson.iscrasinhg = true;
                 Gideon.isAlive = false;
                 System.out.println("Gideon died");
-                Gideon = new GrittyGideon(10000,1000000);
+                Gideon.xpos = 10235348;
+                Gideon.ypos = 439682398;
             }
             if (Gideon.Power==Jackson.Power){
                 Gideon.Power = (int)(Math.random()*10)+1;
@@ -580,31 +648,96 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
-      //draw the image of the astronaut
+      //draws the image of the charachters
+
        g.drawImage(BackgroundImage,0,0,WIDTH,HEIGHT,null);
         if (Toby.isAlive==true){
             g.drawImage(TyrannicalToby,Toby.xpos, Toby.ypos,Toby.width,Toby.height,null);
         }
 
-        if (Niam.isAlive==true){
             g.drawImage(NattyNiam,Niam.xpos, Niam.ypos, Niam.width,Niam.height,null);
-        }
         g.drawRect(Niam.hitbox.x,Niam.ypos, Niam.width,Niam.height);
 
         if (Gideon.isAlive==true){
             g.drawImage(GrittyGideon,Gideon.xpos, Gideon.ypos,Gideon.width,Gideon.height,null);
-
         }
-
+        System.out.println(Toby.isAlive);
+        if(Niam.isAlive == true&&Gideon.isAlive==false&& Toby.isAlive==false&&Ren.isAlive==false&&Caden.isAlive==false&&Jackson.isAlive==false) {
+        g.drawImage(NiamBackground,0,0,WIDTH,HEIGHT,null);
+        g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Niam Won!!!",500,400);
+            System.out.println("won");
+            Niam.width = 250;
+            Niam.height = 250;
+            g.drawImage(NattyNiam,Niam.xpos, Niam.ypos, Niam.width,Niam.height,null);
+        }
+        //these if staments are for the winner of the match, it checks to see if everyone else is dead
+        // If they are the only one alive and everyone is dead, than a custom background and text apears on the screen.(I didn't have enough time to do all of them but was able to do a cuppole)
+        if(Toby.isAlive == true&&Niam.isAlive==false&& Gideon.isAlive==false&&Ren.isAlive==false&&Caden.isAlive==false&&Jackson.isAlive==false) {
+            g.drawImage(NiamBackground,0,0,WIDTH,HEIGHT,null);
+            g.setColor(Color.YELLOW);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Toby Won!!!",500,400);
+            System.out.println("won");
+            Toby.width = 250;
+            Toby.height = 250;
+            g.drawImage(TyrannicalToby,Toby.xpos, Toby.ypos, Toby.width,Toby.height,null);
+        }
+        if(Niam.isAlive == true&&Gideon.isAlive==false&& Toby.isAlive==false&&Ren.isAlive==false&&Caden.isAlive==false&&Jackson.isAlive==false) {
+            g.drawImage(NiamBackground,0,0,WIDTH,HEIGHT,null);
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Niam Won!!!",500,400);
+            System.out.println("won");
+            Niam.width = 250;
+            Niam.height = 250;
+            g.drawImage(NattyNiam,Niam.xpos, Niam.ypos, Niam.width,Niam.height,null);
+        }
+        if(Caden.isAlive == true&&Gideon.isAlive==false&& Toby.isAlive==false&&Ren.isAlive==false&&Niam.isAlive==false&&Jackson.isAlive==false) {
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Caden Won!!!",500,400);
+            System.out.println("won");
+            Caden.width = 250;
+            Caden.height = 250;
+            g.drawImage(CockyCaden,Caden.xpos, Caden.ypos, Caden.width,Caden.height,null);
+        }
+        if(Gideon.isAlive == true&&Niam.isAlive==false&& Toby.isAlive==false&&Ren.isAlive==false&&Caden.isAlive==false&&Jackson.isAlive==false) {
+            g.drawImage(NiamBackground,0,0,WIDTH,HEIGHT,null);
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Gideon Won!!!",500,400);
+            System.out.println("won");
+            Gideon.width = 250;
+            Gideon.height = 250;
+            g.drawImage(GrittyGideon,Gideon.xpos, Gideon.ypos, Gideon.width,Gideon.height,null);
+        }
+        if(Ren.isAlive == true&&Gideon.isAlive==false&& Toby.isAlive==false&&Niam.isAlive==false&&Caden.isAlive==false&&Jackson.isAlive==false) {
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Ren Won!!!",500,400);
+            System.out.println("won");
+            Ren.width = 250;
+            Ren.height = 250;
+            g.drawImage(RobustRen,Ren.xpos, Ren.ypos, Ren.width,Ren.height,null);
+        }
+        if(Jackson.isAlive == true&&Gideon.isAlive==false&& Toby.isAlive==false&&Ren.isAlive==false&&Caden.isAlive==false&&Niam.isAlive==false) {
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial",Font.BOLD,100));
+            g.drawString("Jackson Won!!!",500,400);
+            System.out.println("won");
+            Jackson.width = 450;
+            Jackson.height = 450;
+            g.drawImage(JovialJackson,Jackson.xpos, Jackson.ypos, Jackson.width,Jackson.height,null);
+        }
         g.drawImage(RobustRen,Ren.xpos, Ren.ypos,Ren.width,Ren.height,null);
         g.drawImage(JovialJackson,Jackson.xpos, Jackson.ypos,Jackson.width,Jackson.height,null);
         g.drawImage(CockyCaden,Caden.xpos, Caden.ypos,Caden.width,Caden.height,null);
         g.drawRect(Toby.hitBox.x,Toby.hitBox.y,Toby.hitBox.width, Toby.hitBox.height);
 
-     /*/   g.setColor(Color.blue);
-        g.setFont(new Font("Arial",Font.BOLD,1000));
-        g.drawString("THE",100,400);
-		g.dispose();/*/
+
+		g.dispose();
 
 		bufferStrategy.show();
 	}

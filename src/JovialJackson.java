@@ -28,42 +28,55 @@ import java.awt.*;
         public JovialJackson(int pXpos, int pYpos) {
             xpos = pXpos;
             ypos = pYpos;
-            dx = -10;
-            dy = 5;
-            width = 95;
-            height = 95;
+            dx = 5;
+            dy = 7;
+            width = 70;
+            height = 80;
             isAlive = true;
             iscrasinhg = false;
             hitBox = new Rectangle(xpos,ypos,90,90);
-            Power = (int)(Math.random()*10)+1;
+            Power = (int)(Math.random()*8)+1;
 
         } // constructor
 
         //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
         public void move() {
-            if (xpos >= 1500 - width) {
-                xpos = 0;
+            if (xpos >= 1498 - width) {
+                xpos = 0-width;
+            }
+            if (xpos < 0-width) {
+                xpos = 1498 - width;
             }
 
-            if (xpos <= 0) {
-                xpos = 1499 - width;
-            }
-
-            if (ypos >= 799 - height) {
+            if (ypos >= 798 - height) {
                 ypos = 1;
             }
-
             if (ypos <= 0 ) {
                 ypos = 799-height;
             }
+
             xpos = xpos + dx;
             ypos = ypos + dy;
             hitBox = new Rectangle(xpos,ypos,90,90);
         }
     }
 
+  /*/if (xpos >= 1500 - width) {
+xpos = 0;
+        }
 
+        if (xpos <= 0) {
+xpos = 1499 - width;
+            }
 
+                    if (ypos >= 799 - height) {
+ypos = 1;
+        }
+
+        if (ypos <= 0 ) {
+ypos = 799-height;
+            }
+/*/
 
 
 

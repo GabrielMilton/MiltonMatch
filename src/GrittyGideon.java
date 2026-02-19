@@ -28,8 +28,8 @@ import java.awt.*;
         public GrittyGideon(int pXpos, int pYpos) {
             xpos = pXpos;
             ypos = pYpos;
-            dx = -10;
-            dy = 20;
+            dx = 5;
+            dy = 7;
             width = 85;
             height = 85;
             isAlive = true;
